@@ -110,6 +110,22 @@ void menuDisplay()
     printf("%d: Quit\n", QUIT_OPTION);
 }
 
+void makeHashDriver()
+{
+    char* currentFile = NULL;
+    char* inputBuffer = malloc(sizeof(char) * 128);
+    if(inputBuffer == NULL)
+    {
+        pritnf("System does not enough memory to run\n");
+        exit(-1);
+    }
+    printf("Please Enter logical file location with name(MAX 128): ");
+    scanf("%128s", inputBuffer);
+    currentFile = getStringHash(inputBuffer);
+    printf("HASH = %s\n", currentFile);
+    free(currentFile);
+}
+
 void driverFunction(NodePtr* head)
 {
     int option = 0; 
@@ -121,7 +137,7 @@ void driverFunction(NodePtr* head)
         scanf("%d", &option);
         if(option == MAKE_HASH_OPTION)
         {
-            printf("MAKING HASH\n");
+            makeHashDriver();
         }
         else if(option == SEARCH_HASH_OPTION)
         {
