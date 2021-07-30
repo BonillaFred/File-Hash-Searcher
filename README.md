@@ -18,3 +18,4 @@ The goal of the this repo is to search for a file using a sha-256 hash. Currentl
   2. Add better error check when malloc failes to find memory 
   3. Add better documentation for all functions 
   4. Add a windows devlopment stream 
+  5. Add ability to decide where we should index all files
