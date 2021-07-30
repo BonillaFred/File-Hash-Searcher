@@ -110,10 +110,41 @@ void menuDisplay()
     printf("%d: Quit\n", QUIT_OPTION);
 }
 
+void driverFunction(NodePtr* head)
+{
+    int option = 0; 
+    int continueLoop = 1;
+    while(continueLoop)
+    {
+        menuDisplay(); 
+        printf("Enter Option: ");
+        scanf("%d", &option);
+        switch (option)
+        {
+        case MAKE_HASH_OPTION:
+            printf("MAKING HASH\n");
+            break;
+        
+        case SEARCH_HASH_OPTION:
+            printf("SEARCHING FOR HASH\n");
+            break;
+        
+        case QUIT_OPTION:
+            printf("STOPING\n");
+            continueLoop = -1;
+            break;
+
+        default:
+            printf("Error: Input option not found :(\n");
+            break;
+        }
+    }
+}
+
 int main(int argc, char* argv[])
 {
     NodePtr head = NULL;
-    menuDisplay();
+    driverFunction(&head);
     deleteTree(&head);
     return 0; 
 }
