@@ -167,7 +167,7 @@ void driverFunction(NodePtr* head)
         }
         else if(option == SEARCH_HASH_OPTION)
         {
-            printf("SEARCHING FOR HASH\n");
+            searchHashDriver(*head);
         }
         else if(option == QUIT_OPTION)
         {
@@ -187,6 +187,7 @@ void driverFunction(NodePtr* head)
 int main(int argc, char* argv[])
 {
     NodePtr head = NULL;
+    runThroughDirs(".\0", &head);
     driverFunction(&head);
     deleteTree(&head);
     return 0; 
