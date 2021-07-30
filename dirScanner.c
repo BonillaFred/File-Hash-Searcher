@@ -146,9 +146,21 @@ void searchHashDriver(NodePtr head)
     {
         badMemoryError(); 
     }
-    printf("Please Enter SHA-256 hash: ");
+    printf("Please Enter SHA-256 hash(MAX-128): ");
     scanf("%128s", input);
-    searchTree(head, input);
+    NodePtr snc = searchTree(head, input);
+    if(snc == NULL)
+    {
+        printf("Not Found Sorry :(\n");
+        return;
+    }
+    else
+    {
+        for(int i = 0; i < snc->arraySize; i++)
+        {
+            printf("Found at: %s\n", snc->fileNames[i]);
+        }
+    }
     free(input);
 }
 
