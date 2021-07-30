@@ -10,7 +10,8 @@ The goal of the this repo is to search for a file using a sha-256 hash. Currentl
   make
 
 ## Running 
-  ./scanner file-hash
+  Note where the program runs is where things are indexed. 
+  ./scanner
   
   
 # TODO:
