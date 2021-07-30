@@ -131,6 +131,7 @@ void makeHashDriver()
     {
         printf("HASH = %s\n", currentFile);
         free(currentFile);
+        free(inputBuffer);
     }
     else
     {
