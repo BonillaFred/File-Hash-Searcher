@@ -1,2 +1,3 @@
-# didactic-journey
-Ever wanted to find if a file is in your system but only have the hash. Well I have the solution for you! This repo was built with that goal in mind.
+# File Hasher
+
+The goal of the this repo is to search for a file using a sha-256 hash. Currently only works for linux system that have openssl and dirent installed. 
