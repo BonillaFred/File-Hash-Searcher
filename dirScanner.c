@@ -5,6 +5,10 @@
 #include <ctype.h>
 #include "searcher.h"
 
+const int MAKE_HASH_OPTION = 1;
+const int SEARCH_HASH_OPTION = 2;
+const int QUIT_OPTION = 3;
+
 unsigned char* hashFile(const char* currentFileName)
 {
     unsigned char* fileDigest = malloc(sizeof(unsigned char) * SHA256_DIGEST_LENGTH);
@@ -99,10 +103,22 @@ void runThroughDirs(char* initalPath, NodePtr* head)
 
 }
 
+void menuDisplay()
+{
+    printf("%d: Make a hash for a file\n", MAKE_HASH_OPTION);
+    printf("%d: Search for hash\n", SEARCH_HASH_OPTION);
+    printf("%d: Quit\n", QUIT_OPTION);
+}
 
 int main(int argc, char* argv[])
 {
     NodePtr head = NULL;
+    menuDisplay();
+    deleteTree(&head);
+    return 0; 
+}
+
+/*
     if(argc > 2 || argc == 1)
     {
         printf("Sorry that's not correct!\n");
@@ -129,6 +145,4 @@ int main(int argc, char* argv[])
             printf("Found At %s\n", snc->fileNames[i]);
         }
     }
-    deleteTree(&head);
-    return 0; 
-}
+    */
