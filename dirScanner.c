@@ -110,14 +110,19 @@ void menuDisplay()
     printf("%d: Quit\n", QUIT_OPTION);
 }
 
+void badMemoryError()
+{
+    printf("System does not enough memory to run\n");
+    exit(-1);
+}
+
 void makeHashDriver()
 {
     char* currentFile = NULL;
     char* inputBuffer = malloc(sizeof(char) * 128);
     if(inputBuffer == NULL)
     {
-        printf("System does not enough memory to run\n");
-        exit(-1);
+        badMemoryError();
     }
     printf("Please Enter logical file location with name(MAX 128): ");
     scanf("%128s", inputBuffer);
@@ -132,6 +137,31 @@ void makeHashDriver()
         printf("File not found sorry\n");
 
     }
+}
+
+void searchHashDriver(NodePtr head)
+{
+    char* input = malloc(sizeof(char) * 128);
+    if(input == NULL)
+    {
+        badMemoryError(); 
+    }
+    printf("Please Enter SHA-256 hash(MAX-128): ");
+    scanf("%128s", input);
+    NodePtr snc = searchTree(head, input);
+    if(snc == NULL)
+    {
+        printf("Not Found Sorry :(\n");
+        return;
+    }
+    else
+    {
+        for(int i = 0; i < snc->arraySize; i++)
+        {
+            printf("Found at: %s\n", snc->fileNames[i]);
+        }
+    }
+    free(input);
 }
 
 void driverFunction(NodePtr* head)
@@ -149,7 +179,7 @@ void driverFunction(NodePtr* head)
         }
         else if(option == SEARCH_HASH_OPTION)
         {
-            printf("SEARCHING FOR HASH\n");
+            searchHashDriver(*head);
         }
         else if(option == QUIT_OPTION)
         {
@@ -169,6 +199,7 @@ void driverFunction(NodePtr* head)
 int main(int argc, char* argv[])
 {
     NodePtr head = NULL;
+    runThroughDirs(".\0", &head);
     driverFunction(&head);
     deleteTree(&head);
     return 0; 
