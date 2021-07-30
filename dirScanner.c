@@ -5,6 +5,10 @@
 #include <ctype.h>
 #include "searcher.h"
 
+const int MAKE_HASH_OPTION = 1;
+const int SEARCH_HASH_OPTION = 2;
+const int QUIT_OPTION = 3;
+
 unsigned char* hashFile(const char* currentFileName)
 {
     unsigned char* fileDigest = malloc(sizeof(unsigned char) * SHA256_DIGEST_LENGTH);
@@ -99,10 +103,78 @@ void runThroughDirs(char* initalPath, NodePtr* head)
 
 }
 
+void menuDisplay()
+{
+    printf("%d: Make a hash for a file\n", MAKE_HASH_OPTION);
+    printf("%d: Search for hash\n", SEARCH_HASH_OPTION);
+    printf("%d: Quit\n", QUIT_OPTION);
+}
+
+void makeHashDriver()
+{
+    char* currentFile = NULL;
+    char* inputBuffer = malloc(sizeof(char) * 128);
+    if(inputBuffer == NULL)
+    {
+        printf("System does not enough memory to run\n");
+        exit(-1);
+    }
+    printf("Please Enter logical file location with name(MAX 128): ");
+    scanf("%128s", inputBuffer);
+    currentFile = getStringHash(inputBuffer);
+    if(currentFile != NULL)
+    {
+        printf("HASH = %s\n", currentFile);
+        free(currentFile);
+    }
+    else
+    {
+        printf("File not found sorry\n");
+
+    }
+}
+
+void driverFunction(NodePtr* head)
+{
+    int option = 0; 
+    int continueLoop = 1;
+    while(continueLoop == 1)
+    {
+        menuDisplay(); 
+        printf("Enter Option: ");
+        scanf("%d", &option);
+        if(option == MAKE_HASH_OPTION)
+        {
+            makeHashDriver();
+        }
+        else if(option == SEARCH_HASH_OPTION)
+        {
+            printf("SEARCHING FOR HASH\n");
+        }
+        else if(option == QUIT_OPTION)
+        {
+            printf("STOPING\n");
+            continueLoop = -1;
+        }
+        else
+        {
+            printf("Error: Input option not found :(\n");
+            // CELVER SOLN: https://stackoverflow.com/questions/7898215/how-to-clear-input-buffer-in-c
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) { }
+        }
+    }
+}
 
 int main(int argc, char* argv[])
 {
     NodePtr head = NULL;
+    driverFunction(&head);
+    deleteTree(&head);
+    return 0; 
+}
+
+/*
     if(argc > 2 || argc == 1)
     {
         printf("Sorry that's not correct!\n");
@@ -129,6 +201,4 @@ int main(int argc, char* argv[])
             printf("Found At %s\n", snc->fileNames[i]);
         }
     }
-    deleteTree(&head);
-    return 0; 
-}
+    */
