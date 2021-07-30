@@ -114,29 +114,27 @@ void driverFunction(NodePtr* head)
 {
     int option = 0; 
     int continueLoop = 1;
-    while(continueLoop)
+    while(continueLoop == 1)
     {
         menuDisplay(); 
         printf("Enter Option: ");
         scanf("%d", &option);
-        switch (option)
+        if(option == MAKE_HASH_OPTION)
         {
-        case MAKE_HASH_OPTION:
             printf("MAKING HASH\n");
-            break;
-        
-        case SEARCH_HASH_OPTION:
+        }
+        else if(option == SEARCH_HASH_OPTION)
+        {
             printf("SEARCHING FOR HASH\n");
-            break;
-        
-        case QUIT_OPTION:
+        }
+        else if(option == QUIT_OPTION)
+        {
             printf("STOPING\n");
             continueLoop = -1;
-            break;
-
-        default:
+        }
+        else
+        {
             printf("Error: Input option not found :(\n");
-            break;
         }
     }
 }
