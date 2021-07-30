@@ -110,14 +110,19 @@ void menuDisplay()
     printf("%d: Quit\n", QUIT_OPTION);
 }
 
+void badMemoryError()
+{
+    printf("System does not enough memory to run\n");
+    exit(-1);
+}
+
 void makeHashDriver()
 {
     char* currentFile = NULL;
     char* inputBuffer = malloc(sizeof(char) * 128);
     if(inputBuffer == NULL)
     {
-        printf("System does not enough memory to run\n");
-        exit(-1);
+        badMemoryError();
     }
     printf("Please Enter logical file location with name(MAX 128): ");
     scanf("%128s", inputBuffer);
@@ -132,6 +137,19 @@ void makeHashDriver()
         printf("File not found sorry\n");
 
     }
+}
+
+void searchHashDriver(NodePtr head)
+{
+    char* input = malloc(sizeof(char) * 128);
+    if(input == NULL)
+    {
+        badMemoryError(); 
+    }
+    printf("Please Enter SHA-256 hash: ");
+    scanf("%128s", input);
+    searchTree(head, input);
+    free(input);
 }
 
 void driverFunction(NodePtr* head)
