@@ -105,6 +105,7 @@ int max(int a, int b);
  **/ 
 int getHeightSlow(NodePtr current);
 
+
 void updateNodeHeight(NodePtr* node);
 
 int getNodeHeight(NodePtr node);
