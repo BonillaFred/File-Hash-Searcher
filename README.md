@@ -11,3 +11,10 @@ The goal of the this repo is to search for a file using a sha-256 hash. Currentl
 
 ## Running 
   ./scanner file-hash
+  
+  
+# TODO:
+  1. Replace all STRCPY with STRNCPY : need to prevent buffer overflow 
+  2. Add better error check when malloc failes to find memory 
+  3. Add better documentation for all functions 
+  4. Add a windows devlopment stream 
