@@ -70,10 +70,39 @@ typedef struct Node* NodePtr;
  **/ 
 NodePtr makeNode(char* hash, char* fileName);
 
+/**
+ * gets the cmp value from strcmp for each Nodes hash. 
+ * A null is also preformed for both nodes before strcmp is called.
+ * 
+ * NodePtr x: The node we want to cmp it's hash. 
+ * NodePtr y: The second node we want tp cmp 
+ *
+ * Return:
+ *  the cmp value 0 if NULL is found for either node
+ **/
 int getCmp(NodePtr x, NodePtr y);
 
+/**
+ * get the max between two numbers
+ * 
+ * int a: first num 
+ * int b: second num
+ * 
+ * return:
+ *  the largest pf the two nums
+ **/
 int max(int a, int b);
 
+/**
+ * Runs from the current node and count the height. 
+ * It shouldn't be used unless needed to confirm the 
+ * tasked result. 
+ * 
+ * NodePtr current: the node we want to find the height of. 
+ * 
+ * Return:
+ *  the height for that node. 
+ **/ 
 int getHeightSlow(NodePtr current);
 
 void updateNodeHeight(NodePtr* node);
