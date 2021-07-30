@@ -116,14 +116,22 @@ void makeHashDriver()
     char* inputBuffer = malloc(sizeof(char) * 128);
     if(inputBuffer == NULL)
     {
-        pritnf("System does not enough memory to run\n");
+        printf("System does not enough memory to run\n");
         exit(-1);
     }
     printf("Please Enter logical file location with name(MAX 128): ");
     scanf("%128s", inputBuffer);
     currentFile = getStringHash(inputBuffer);
-    printf("HASH = %s\n", currentFile);
-    free(currentFile);
+    if(currentFile != NULL)
+    {
+        printf("HASH = %s\n", currentFile);
+        free(currentFile);
+    }
+    else
+    {
+        printf("File not found sorry\n");
+
+    }
 }
 
 void driverFunction(NodePtr* head)
@@ -151,6 +159,9 @@ void driverFunction(NodePtr* head)
         else
         {
             printf("Error: Input option not found :(\n");
+            // CELVER SOLN: https://stackoverflow.com/questions/7898215/how-to-clear-input-buffer-in-c
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) { }
         }
     }
 }
