@@ -9,6 +9,12 @@ const int MAKE_HASH_OPTION = 1;
 const int SEARCH_HASH_OPTION = 2;
 const int QUIT_OPTION = 3;
 
+/**
+ * hashes the current file that is found at the given 
+ * file name. 
+ * 
+ * const char* currentFileName: the file name of the given file. 
+ **/
 unsigned char* hashFile(const char* currentFileName)
 {
     unsigned char* fileDigest = malloc(sizeof(unsigned char) * SHA256_DIGEST_LENGTH);
@@ -37,7 +43,12 @@ unsigned char* hashFile(const char* currentFileName)
     return fileDigest; 
 }
 
-// probaly using more memory than I need too :(
+/**
+ * get the string value of the sha-256 hash. 
+ * IMPROVEMENT:  probaly using more memory than I need too :(
+ * 
+ * const char* fileName: the file name of the file we want to hash. 
+**/
 char* getStringHash(const char* fileName)
 {
     int outputSize = sizeof(char) * 65; // Including null term
@@ -65,6 +76,15 @@ char* getStringHash(const char* fileName)
     return result;
 }
 
+/**
+ * Simple recusive scan starting from the programs 
+ * given dir.
+ *
+ * char* initalPath: the starting path 
+ * 
+ * NodePtr* head: this is the avl-trees head. 
+ * 
+ **/
 void runThroughDirs(char* initalPath, NodePtr* head)
 {
     struct dirent** dirEntries = NULL;
@@ -131,6 +151,7 @@ void makeHashDriver()
     {
         printf("HASH = %s\n", currentFile);
         free(currentFile);
+        free(inputBuffer);
     }
     else
     {
@@ -204,32 +225,3 @@ int main(int argc, char* argv[])
     deleteTree(&head);
     return 0; 
 }
-
-/*
-    if(argc > 2 || argc == 1)
-    {
-        printf("Sorry that's not correct!\n");
-        printf("Should be like this: scanner sha256-hash\n");
-        exit(-1);
-    }
-    int argumentLength = strnlen(argv[1], 256);
-    char hash[argumentLength+1];
-    char* unsanHash = argv[1];
-    for(int i = 0; i < argumentLength; i++)
-        hash[i] = tolower(unsanHash[i]);
-    hash[argumentLength] = '\0';
-
-    runThroughDirs(".\0", &head);
-    NodePtr snc = searchTree(head, hash);
-    if(snc == NULL)
-    {
-        printf("Hash not found!\n");
-    }
-    else
-    {
-        for(int i = 0; i < snc->arraySize; i++)
-        {
-            printf("Found At %s\n", snc->fileNames[i]);
-        }
-    }
-    */
