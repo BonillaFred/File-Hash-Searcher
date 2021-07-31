@@ -6,6 +6,12 @@ so please use this at your own risk.
 
 The goal of the this repo is to search for a file using a sha-256 hash. Currently only works for linux system that have openssl and dirent installed. 
 
+From my home dir:
+
+|SPEED | MEMORY USE| 
+|------|-----------|
+|1ms   | 45MB      |
+
 ## Building From Source:
   make
 
