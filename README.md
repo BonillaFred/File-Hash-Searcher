@@ -16,7 +16,7 @@ The goal of the this repo is to search for a file using a sha-256 hash. Currentl
   
 # TODO:
   1. Replace all STRCPY with STRNCPY : need to prevent buffer overflow 
-  2. Add better error check when malloc failes to find memory 
-  3. Add better documentation for all functions 
-  4. Add a windows devlopment stream 
-  5. Add ability to decide where we should index all files
+  2. Add better error check when malloc failes to find memory
+  3. Add a windows devlopment stream 
+  4. Add ability to decide where we should index all files
+  5. Add GIF showing common use case 
