@@ -105,29 +105,53 @@ int max(int a, int b);
  **/ 
 int getHeightSlow(NodePtr current);
 
-
+/**
+ * Updates the node height in place so we don't 
+ * need to search from here to the bottom. 
+ * 
+ * NodePtr* node: the whose height we need to update
+ **/
 void updateNodeHeight(NodePtr* node);
 
+/**
+ * get the node height if null returns 0. 
+ * 
+ * NodePtr node: the node whose height we need. 
+ **/
 int getNodeHeight(NodePtr node);
 
+//STANDARD 
 void rightRotate(NodePtr* root,NodePtr* current);
 
+//STANDARD 
 void leftRotate(NodePtr* root,NodePtr* current);
 
+//STANDARD 
 void rightLeftRotate(NodePtr* root,NodePtr* current);
 
+//STANDARD 
 void leftRightRotate(NodePtr* root, NodePtr* current);
 
+//STANDARD 
 void bstBalence(NodePtr* root, NodePtr current);
 
+//STANDARD 
 void bstInsert(NodePtr* root, NodePtr parent, NodePtr newNode);
 
+//STANDARD 
 void avlInsert(NodePtr* root, NodePtr newNode);
 
+//STANDARD Pre-order traversal. 
 void printTree(NodePtr root);
 
+/**
+ * frees all used memory. 
+ * 
+ * NodePtr* root: the root node that has all the connections. 
+ **/
 void deleteTree(NodePtr* root);
 
+//STANDARD 
 NodePtr searchTree(NodePtr root, char* hash);
 
 #endif
