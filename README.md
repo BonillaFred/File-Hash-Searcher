@@ -16,8 +16,8 @@ From my home dir:
   make
 
 ## Running 
-  ## Note where the program runs is where things are indexed. 
-  ./scanner
+  ### Note where the program runs is where things are indexed. 
+    ./scanner
   
   
 # TODO:
