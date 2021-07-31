@@ -8,9 +8,9 @@ The goal of the this repo is to search for a file using a sha-256 hash. Currentl
 
 From my home dir:
 
-|SPEED | MEMORY USE| 
-|------|-----------|
-|1ms   | 45MB      |
+|SPEED | MEMORY USE| MEM-LEAKS|
+|------|-----------|----------|
+|1ms   | 45MB      | None Using make check|
 
 ## Building From Source:
   make
