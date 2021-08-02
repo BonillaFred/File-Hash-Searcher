@@ -13,7 +13,7 @@ From my home dir:
 |1ms   | 45MB      | None Using make check|
 
 ## Building From Source:
-  make
+    make
 
 ## Running 
   ### Note where the program runs is where things are indexed. 
